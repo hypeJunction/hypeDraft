@@ -1,0 +1,28 @@
+{
+	"name": "hypejunction/hypedraft",
+	"type": "elgg-plugin",
+	"description": "Publishing workflow for Elgg",
+	"homepage": "http://hypejunction.com",
+	"keywords": [
+		"elgg", "plugin", "forms"
+	],
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "Ismayil Khayredinov",
+			"email": "info@hypejunction.com"
+		}
+	],
+	"extra": {
+		"installer-name": "hypeDraft"
+	},
+	"require": {
+		"php": ">=7.0",
+		"composer/installers": "~1.0"
+	},
+	"autoload": {
+		"psr-0": {
+			"": "classes/"
+		}
+	}
+}
