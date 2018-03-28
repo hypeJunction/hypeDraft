@@ -8,6 +8,8 @@ use Elgg\BadRequestException;
 use Elgg\Http\ResponseBuilder;
 use Elgg\HttpException;
 use Elgg\Request;
+use hypeJunction\Fields\Field;
+use hypeJunction\Fields\FieldInterface;
 use hypeJunction\Time;
 
 class AutosaveAction {
@@ -20,6 +22,9 @@ class AutosaveAction {
 	 * @return ResponseBuilder
 	 * @throws BadRequestException
 	 * @throws HttpException
+	 * @throws \Elgg\EntityNotFoundException
+	 * @throws \Elgg\EntityPermissionsException
+	 * @throws \InvalidParameterException
 	 */
 	public function __invoke(Request $request) {
 
@@ -48,14 +53,10 @@ class AutosaveAction {
 		} else {
 			$entity = get_entity($guid);
 
-			$fields = $svc->normalizeFields($entity, $svc->getFields($entity));
+			$fields = $svc->getFields($entity, Field::CONTEXT_CREATE_FORM);
 
-			$fields = array_filter($fields, function ($e) {
-				$name = elgg_extract('name', $e);
-				if (!$name) {
-					return false;
-				}
-				if (in_array($name, \ElggEntity::$primary_attr_names)) {
+			$fields = $fields->filter(function (FieldInterface $field) {
+				if (in_array($field->name, \ElggEntity::$primary_attr_names)) {
 					return false;
 				}
 
@@ -64,22 +65,18 @@ class AutosaveAction {
 
 			$values = [];
 
-			foreach ($fields as $key => $field) {
-				$name = elgg_extract('name', $field);
+			foreach ($fields as $field) {
+				/* @var $field FieldInterface */
 
-				$input = elgg_extract('#input', $field);
-				if ($input instanceof \Closure) {
-					$value = $input($request, $field);
-				} else {
-					$value = get_input($name);
-				}
+				$name = $field->name;
 
+				$value = $field->raw($request, $entity);
 				if (!isset($value)) {
 					// Field is not present
 					continue;
 				}
 
-				$values[$key] = $value;
+				$values[$name] = $value;
 			}
 
 			$revisions = $entity->getAnnotations([
