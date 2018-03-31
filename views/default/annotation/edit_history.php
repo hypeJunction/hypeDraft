@@ -12,6 +12,6 @@ echo elgg_view('output/url', [
 		'revision' => $annotation->id,
 	]),
 	'text' => elgg_echo('annotation:edit_history'),
-]);
+]) . ' ' . elgg_echo('byline', [$annotation->getOwnerEntity()->getDisplayName()]);
 echo '<br />';
 echo elgg_view_friendly_time($annotation->time_created);

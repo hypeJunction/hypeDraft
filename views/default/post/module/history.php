@@ -17,5 +17,5 @@ echo elgg_view('post/module', [
 	'title' => elgg_echo('post:history'),
 	'body' => $output,
 	'collapsed' => true,
-	'class' => 'post-history',
+	'class' => 'post-history has-list',
 ]);
