@@ -19,6 +19,8 @@ return function () {
 
 		elgg_register_plugin_hook_handler('register', 'menu:entity', \hypeJunction\Draft\EntityMenu::class);
 
+		elgg_register_plugin_hook_handler('uses:comments', 'all', \hypeJunction\Draft\HideDraftComments::class);
+
 		elgg_extend_view('post/elements/form_footer', 'post/elements/autosave');
 
 		elgg_extend_view('object/elements/imprint/contents', 'post/imprint/status');
