@@ -25,6 +25,6 @@ if (isset($icons[$status])) {
 
 $status_text = $icon . elgg_echo("published_status:{$status}");
 
-echo elgg_format_element('span', [
-	'class' => 'elgg-listing-blog-status',
+echo elgg_format_element('strong', [
+	'class' => 'elgg-listing-blog-status elgg-state elgg-state-danger',
 ], $status_text);
