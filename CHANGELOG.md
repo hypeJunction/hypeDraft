@@ -1,3 +1,14 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/hypeJunctionPro/Elgg3-hypeDraft/compare/1.0.2...1.0.3) (2018-04-27)
+
+
+### Bug Fixes
+
+* **ux:** hide comments on draft entities ([6edd69e](https://github.com/hypeJunctionPro/Elgg3-hypeDraft/commit/6edd69e))
+* **ux:** make draft label more visible ([0cb7ab1](https://github.com/hypeJunctionPro/Elgg3-hypeDraft/commit/0cb7ab1))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/hypeJunctionPro/Elgg3-hypeDraft/compare/1.0.1...1.0.2) (2018-03-31)
 
