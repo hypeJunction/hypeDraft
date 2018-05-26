@@ -2,7 +2,7 @@
 
 $entity = elgg_extract('entity', $vars);
 
-if (!elgg_trigger_plugin_hook('uses:autosave', "$entity->type:$entity->subtype", $vars, true)) {
+if (!elgg_trigger_plugin_hook('uses:autosave', "$entity->type:$entity->subtype", $vars, false)) {
 	return;
 }
 

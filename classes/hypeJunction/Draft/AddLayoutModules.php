@@ -19,7 +19,7 @@ class AddLayoutModules {
 			return;
 		}
 
-		if (!elgg_trigger_plugin_hook('uses:autosave', "$entity->type:$entity->subtype", $hook->getParams(), true)) {
+		if (!elgg_trigger_plugin_hook('uses:autosave', "$entity->type:$entity->subtype", $hook->getParams(), false)) {
 			return;
 		}
 
