@@ -21,6 +21,11 @@ class HideUnpublishedPosts {
 
 		$value = $hook->getValue();
 
+		$ignore_access = $hook->getParam('ignore_access');
+		if ($ignore_access) {
+			return null;
+		}
+
 		$qb = $hook->getParam('query_builder');
 		/* @var $qb \Elgg\Database\QueryBuilder */
 
