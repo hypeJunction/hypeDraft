@@ -53,6 +53,6 @@ class DraftService {
 	 * @return string|null
 	 */
 	public function getPublishedStatus(ElggEntity $entity) {
-		return $entity->published_status ? : $entity->status;
+		return $entity->published_status;
 	}
 }
