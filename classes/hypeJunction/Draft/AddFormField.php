@@ -33,6 +33,7 @@ class AddFormField {
 			'section' => 'sidebar',
 			'priority' => 110,
 			'is_profile_field' => false,
+			'is_export_field' => true,
 		]));
 
 		if ($revision = get_input('revision')) {
